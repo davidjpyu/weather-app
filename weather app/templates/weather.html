@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather in {{ weather.city }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='weather.css') }}">
+</head>
+<body>
+    <h1>Weather in {{ weather.city }}, {{ weather.country }}</h1>
+    <div class="weather-section">
+        <div class="current-weather">
+            <h2>Current Weather</h2>
+            <p class="temperature">{{ weather.cur_temp_fahrenheit }}°F</p>
+            <p class="condition">{{ weather.cur_weather }}</p>
+            <p>High: {{ weather.cur_maxtemp_fahrenheit }}°F</p>
+            <p>Low: {{ weather.cur_mintemp_fahrenheit }}°F</p>
+            <p>{{ weather.localtime }}</p>
+        </div>
+
+        <h3>Hourly Forecast</h3>
+        <div class="hourly-weather">
+            {% for time, data in weather.today_hour_map.items() %} 
+            <div class="hour">
+                <p><strong>{{ time }}</strong></p>
+                <p>{{ data.temp_f }}°F</p>
+                <p>{{ data.weather }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h3>4-Day Forecast </h3>
+        <div class="future-weather">
+            {% for date, data in weather.future_day_map.items() %}
+            <div class="day">
+                <p><strong>{{ date }}</strong></p>
+                <p>Max: {{ data.maxtemp_f }}°F</p>
+                <p>Min: {{ data.mintemp_f }}°F</p>
+                <p>{{ data.weather }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="/">Check another city</a>
+    </div>
+</body>
+</html>
