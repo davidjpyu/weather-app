@@ -8,13 +8,26 @@
 </head>
 <body>
     <h1>Weather App</h1>
+    <h2>by Junpu Yu</h2>
     <form action="/weather" method="POST">
-        <input type="text" name="city" placeholder="Enter city name" required>
+        <input type="text" name="city" placeholder="Enter city" required>
         <input type="submit" value="Get Weather">
     </form>
-
-    {% if error %}
-    <p class="error">{{ error }}</p>
-    {% endif %}
+    
+    <!-- Info button -->
+    <button id="info-btn">Info</button>
+    
+    <!-- Modal for project description -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Project Description</h2>
+            <p>This is a weather app for an Software Engineer Intern - AI/ML Application Tech Assessment by PM Accelerator.
+            </p>
+            <p>PM Accelerator is a platform to transparently showcase PM skills to ease the application / hiring process for PMs and companies.</p>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
