@@ -9,4 +9,4 @@ This is a simple weather app using Flask, Python, Html, and [weatherapi](https:/
 - [ ] Use icons or images to make the weather info look cool (In progress... However, there are too many weather conditions, each needing a unique icon)
 
 ## To use:
-run weather-app.py and open http://127.0.0.1:5000
+run weather-app.py locally and open http://127.0.0.1:5000
